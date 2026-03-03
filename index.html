@@ -343,6 +343,7 @@
             gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
+            pointer-events: auto;
         }
 
         .btn-hero {
@@ -356,6 +357,8 @@
             border: none;
             transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             position: relative;
+            z-index: 100;
+            pointer-events: auto !important;
             overflow: hidden;
             display: inline-flex;
             align-items: center;
@@ -1327,6 +1330,10 @@
                 bottom: 10% !important;
                 width: 90%;
                 max-width: 400px;
+                background: rgba(10, 10, 15, 0.4) !important;
+                backdrop-filter: blur(4px) !important;
+                -webkit-backdrop-filter: blur(4px) !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
                 border-left: 3px solid var(--red) !important;
                 border-right: none !important;
                 border-radius: 0 8px 8px 0 !important;
@@ -1345,29 +1352,21 @@
                 letter-spacing: -1.5px;
             }
 
-            .cert-widget {
-                position: fixed;
-                top: 85px;
-                bottom: auto;
-                left: 50%;
-                right: auto;
-                transform: translateX(-50%);
-                padding: 8px 16px 8px 8px;
-                clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
-                z-index: 100;
-                width: auto;
-                min-width: 250px;
-                justify-content: center;
+            .hero-intro .hero-btns {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+                margin-top: 10px;
             }
 
-            .cert-widget img {
-                width: 44px;
-                height: 44px;
+            .btn-hero {
+                width: 100%;
+                max-width: 280px;
+                padding: 14px 20px;
+                font-size: 0.85rem;
             }
 
-            .cert-widget-text strong {
-                font-size: 0.9rem;
-            }
+
 
             .lightbox-close {
                 top: 20px;
