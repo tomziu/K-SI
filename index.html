@@ -34,6 +34,8 @@
 
         html {
             scroll-behavior: smooth;
+            font-size: 112.5%;
+            /* Zoom everything by 10% (18px base) */
         }
 
         body {
@@ -354,7 +356,7 @@
 
         .hero-left h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2rem, 5vw, 3.8rem);
+            font-size: clamp(2.4rem, 6vw, 4.56rem);
             font-weight: 700;
             color: #fff;
             line-height: 1.08;
@@ -466,49 +468,7 @@
             line-height: 1.55;
         }
 
-        /* scroll indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 32px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 3;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            animation: floatDown 2.5s ease-in-out infinite;
-        }
 
-        .scroll-indicator span {
-            font-size: 0.6rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: rgba(255, 255, 255, 0.2);
-            font-weight: 500;
-        }
-
-        .scroll-indicator .arrow {
-            width: 20px;
-            height: 20px;
-            border-right: 2px solid rgba(255, 255, 255, 0.3);
-            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-            transform: rotate(45deg);
-        }
-
-        @keyframes floatDown {
-
-            0%,
-            100% {
-                transform: translateX(-50%) translateY(0);
-                opacity: 0.6;
-            }
-
-            50% {
-                transform: translateX(-50%) translateY(10px);
-                opacity: 1;
-            }
-        }
 
         /* ---------- MARQUEE ---------- */
         .marquee-strip {
@@ -1284,7 +1244,7 @@
             }
 
             .hero-left h1 {
-                font-size: clamp(1.8rem, 8vw, 2.8rem);
+                font-size: clamp(2.16rem, 9.6vw, 3.36rem);
                 letter-spacing: -1.5px;
             }
 
@@ -1315,6 +1275,8 @@
                 max-width: 400px;
                 margin: 0 auto;
             }
+
+
 
 
 
@@ -1423,10 +1385,7 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <span>Przewiń</span>
-            <div class="arrow"></div>
-        </div>
+
     </section>
 
     <!-- MARQUEE -->
