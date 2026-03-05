@@ -4,16 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K-SI System – Autoryzowany Serwis Bosch | Częstochowa</title>
+    <title>Serwis i Naprawa pieców gazowych Częstochowa | K-SI System Bosch</title>
     <meta name="description"
-        content="Profesjonalny serwis urządzeń gazowych w Częstochowie. Autoryzowany partner Bosch Home Comfort. Montaż, naprawa, konserwacja kotłów gazowych.">
+        content="Profesjonalny serwis pieców i kotłów gazowych w Częstochowie. Autoryzowany instalator Bosch i Junkers. Szybka naprawa, montaż i analiza spalin. Zadzwoń: 535 950 601.">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Serwis i Naprawa pieców gazowych Częstochowa | K-SI System">
+    <meta property="og:description"
+        content="Autoryzowany partner Bosch Home Comfort. Montaż, naprawa, konserwacja pieców gazowych, Częstochowa i okolice.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://k-si.pl/">
+    <meta property="og:image" content="https://k-si.pl/logo-bosch.png">
+    <meta property="og:locale" content="pl_PL">
+
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <style>
         *,
         *::before,
@@ -54,6 +63,26 @@
             --bone: #f0efeb;
             --warm-white: #faf9f6;
             --card-bg: rgba(255, 255, 255, 0.65);
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .logo-img-loader {
+            height: 80px;
+            width: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .logo-img-footer {
+            height: 60px;
+            width: auto;
+            display: block;
+            margin-bottom: 16px;
         }
 
         /* ---------- LOADER ---------- */
@@ -248,102 +277,108 @@
             transform: rotate(-45deg) translate(5px, -6px);
         }
 
-        /* ---------- HERO = ANIMATION ---------- */
-        .hero-anim {
+        /* ---------- HERO ---------- */
+        .hero {
             position: relative;
-            height: 600vh;
+            min-height: 100vh;
             background: var(--dark);
-        }
-
-        .hero-sticky {
-            position: sticky;
-            top: 0;
-            height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
             overflow: hidden;
         }
 
-        .hero-sticky::after {
-            content: '';
+        .hero-bg {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(10, 10, 15, 0.8) 0%, rgba(10, 10, 15, 0.5) 40%, rgba(10, 10, 15, 0.9) 100%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        #furnaceCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
             z-index: 0;
         }
 
-        /* hero text layers */
-        .hero-text-layer {
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            filter: brightness(0.35);
+        }
+
+        .hero::after {
+            content: '';
             position: absolute;
-            z-index: 2;
+            inset: 0;
+            background:
+                linear-gradient(135deg, rgba(10, 10, 15, 0.92) 0%, rgba(10, 10, 15, 0.5) 50%, rgba(10, 10, 15, 0.75) 100%),
+                linear-gradient(to top, var(--dark) 0%, transparent 30%);
+            z-index: 1;
             pointer-events: none;
         }
 
-        .hero-intro {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            width: 90%;
-            max-width: 700px;
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 140px 48px 100px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-left {
+            max-width: 600px;
         }
 
         /* ---------- BOSCH LOGO IN HERO ---------- */
+        .hero-logos {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
         .hero-partner-logo {
-            display: block;
-            margin: 0 auto 32px;
             height: 90px;
-            /* Adjust based on actual aspect ratio */
             object-fit: contain;
             background: #fff;
-            padding: 14px 32px;
+            padding: 12px 24px;
             border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            display: block;
         }
 
-        .hero-intro h1 {
+        .hero-partner-logo.ksi {
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-left h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2rem, 7.5vw, 5.5rem);
+            font-size: clamp(2rem, 5vw, 3.8rem);
             font-weight: 700;
             color: #fff;
-            line-height: 1.05;
-            letter-spacing: -2.5px;
-            margin-bottom: 24px;
-            text-shadow: 0 4px 40px rgba(0, 0, 0, 0.8), 0 2px 10px rgba(0, 0, 0, 0.6);
+            line-height: 1.08;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
         }
 
-        .hero-intro h1 em {
+        .hero-left h1 em {
             font-style: normal;
             color: var(--red);
         }
 
-        .hero-intro p {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.65);
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        .hero-left>p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            margin-bottom: 36px;
+            max-width: 480px;
         }
 
-        .hero-intro .hero-btns {
+        .hero-btns {
             display: flex;
             gap: 16px;
-            justify-content: center;
             flex-wrap: wrap;
-            pointer-events: auto;
         }
 
         .btn-hero {
@@ -356,10 +391,6 @@
             cursor: pointer;
             border: none;
             transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            position: relative;
-            z-index: 100;
-            pointer-events: auto !important;
-            overflow: hidden;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -392,108 +423,53 @@
             transform: translateY(-2px);
         }
 
-        /* scroll info cards (HUD Technical Style) */
-        .info-card {
-            position: absolute;
-            z-index: 3;
-            padding: 24px 32px 24px 28px;
-            background: rgba(10, 10, 15, 0.85);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-left: 3px solid var(--red);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-            max-width: 400px;
-            opacity: 0;
-            pointer-events: auto;
-            border-radius: 0 8px 8px 0;
+        /* Hero feature highlights */
+        .hero-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px 32px;
         }
 
-        .info-card.left {
-            left: 8%;
-            top: 50%;
-            transform: translateY(-50%);
+        .hero-feat {
+            padding: 8px 0 8px 16px;
+            border-left: 2px solid rgba(212, 0, 42, 0.3);
+            transition: all 0.3s ease;
         }
 
-        .info-card.right {
-            right: 8%;
-            top: 50%;
-            transform: translateY(-50%);
-            border-left: none;
-            border-right: 3px solid var(--red);
-            border-radius: 8px 0 0 8px;
-            padding: 24px 28px 24px 32px;
-            text-align: right;
+        .hero-feat:hover {
+            border-left-color: var(--red);
+            transform: translateX(4px);
         }
 
-        /* Tech accents */
-        .info-card::before,
-        .info-card::after {
-            content: '';
-            position: absolute;
-            width: 16px;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.3);
-            transition: width 0.3s;
-        }
-
-        .info-card::before {
-            top: 0;
-        }
-
-        .info-card::after {
-            bottom: 0;
-        }
-
-        .info-card.left::before,
-        .info-card.left::after {
-            left: 0;
-        }
-
-        .info-card.right::before,
-        .info-card.right::after {
-            right: 0;
-        }
-
-        .info-card:hover::before,
-        .info-card:hover::after {
-            width: 32px;
-        }
-
-        .info-card .num {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.75rem;
+        .hero-feat .feat-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.65rem;
             font-weight: 700;
             letter-spacing: 2px;
             color: var(--red);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: inline-block;
-            background: rgba(212, 0, 42, 0.1);
-            padding: 4px 10px;
-            border-radius: 4px;
         }
 
-        .info-card h3 {
+        .hero-feat h4 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 500;
+            font-size: 0.95rem;
+            font-weight: 600;
             color: #fff;
-            line-height: 1.35;
-            margin-bottom: 12px;
-            letter-spacing: -0.3px;
-            text-transform: uppercase;
+            margin-bottom: 6px;
+            letter-spacing: -0.2px;
         }
 
-        .info-card p {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.55);
-            line-height: 1.65;
+        .hero-feat p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.45);
+            line-height: 1.55;
         }
 
-        /* scroll cue */
-        .scroll-cue {
+        /* scroll indicator */
+        .scroll-indicator {
             position: absolute;
-            bottom: 36px;
+            bottom: 32px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 3;
@@ -501,54 +477,36 @@
             flex-direction: column;
             align-items: center;
             gap: 8px;
+            animation: floatDown 2.5s ease-in-out infinite;
         }
 
-        .scroll-cue span {
-            font-size: 0.65rem;
+        .scroll-indicator span {
+            font-size: 0.6rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: rgba(255, 255, 255, 0.25);
+            color: rgba(255, 255, 255, 0.2);
             font-weight: 500;
         }
 
-        .scroll-scanner {
-            width: 1px;
-            height: 60px;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
-            position: relative;
-            overflow: hidden;
-            margin-top: 8px;
+        .scroll-indicator .arrow {
+            width: 20px;
+            height: 20px;
+            border-right: 2px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            transform: rotate(45deg);
         }
 
-        .scroll-scanner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -1px;
-            width: 3px;
-            height: 15px;
-            background: var(--red);
-            box-shadow: 0 0 10px var(--red);
-            animation: scandown 2s cubic-bezier(0.8, 0, 0.2, 1) infinite;
-        }
+        @keyframes floatDown {
 
-        @keyframes scandown {
-            0% {
-                top: -20px;
-                opacity: 0;
-            }
-
-            20% {
-                opacity: 1;
-            }
-
-            80% {
-                opacity: 1;
-            }
-
+            0%,
             100% {
-                top: 60px;
-                opacity: 0;
+                transform: translateX(-50%) translateY(0);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(10px);
+                opacity: 1;
             }
         }
 
@@ -1250,9 +1208,7 @@
                 grid-template-columns: 1fr 1fr;
             }
 
-            .info-card {
-                max-width: 320px;
-            }
+
         }
 
         @media (max-width: 768px) {
@@ -1321,42 +1277,30 @@
                 gap: 40px;
             }
 
-            .info-card {
-                position: absolute;
-                left: 50% !important;
-                right: auto !important;
-                transform: translateX(-50%) !important;
-                top: auto !important;
-                bottom: 10% !important;
-                width: 90%;
-                max-width: 400px;
-                background: rgba(10, 10, 15, 0.4) !important;
-                backdrop-filter: blur(4px) !important;
-                -webkit-backdrop-filter: blur(4px) !important;
-                border: 1px solid rgba(255, 255, 255, 0.1) !important;
-                border-left: 3px solid var(--red) !important;
-                border-right: none !important;
-                border-radius: 0 8px 8px 0 !important;
-                padding: 16px 20px 16px 16px !important;
-                text-align: left !important;
+            .hero-content {
+                grid-template-columns: 1fr;
+                padding: 120px 24px 80px;
+                text-align: center;
             }
 
-            .info-card::before,
-            .info-card::after {
-                left: 0 !important;
-                right: auto !important;
-            }
-
-            .hero-intro h1 {
-                font-size: clamp(1.8rem, 11vw, 3.2rem);
+            .hero-left h1 {
+                font-size: clamp(1.8rem, 8vw, 2.8rem);
                 letter-spacing: -1.5px;
             }
 
-            .hero-intro .hero-btns {
+            .hero-logos {
+                justify-content: center;
+            }
+
+            .hero-left>p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-btns {
                 flex-direction: column;
                 align-items: center;
                 gap: 12px;
-                margin-top: 10px;
             }
 
             .btn-hero {
@@ -1364,6 +1308,12 @@
                 max-width: 280px;
                 padding: 14px 20px;
                 font-size: 0.85rem;
+            }
+
+            .hero-features {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
             }
 
 
@@ -1375,13 +1325,37 @@
             }
         }
     </style>
+    <!-- JSON-LD LocalBusiness Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HVACBusiness",
+      "name": "K-SI System Sp. z o.o.",
+      "image": "https://k-si.pl/logo-transparent.png",
+      "description": "Autoryzowany partner Bosch Home Comfort. Profesjonalny montaż, serwis, naprawa i konserwacja kotłów gazowych. Obsługujemy Bosch, Junkers, Vaillant, Viessmann, Ariston.",
+      "url": "https://k-si.pl/",
+      "telephone": "+48535950601",
+      "email": "biuro@k-si.pl",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Częstochowa",
+        "addressRegion": "Śląskie",
+        "addressCountry": "PL"
+      },
+      "areaServed": "Częstochowa i okolice",
+      "priceRange": "$$"
+    }
+    </script>
 </head>
 
 <body>
 
     <!-- LOADER -->
     <div class="loader-screen" id="loader">
-        <div class="loader-logo">K-<span>SI</span></div>
+        <div class="loader-logo">
+            <img src="logo-transparent.png" alt="K-SI System – serwis kotłów gazowych Częstochowa"
+                class="logo-img-loader">
+        </div>
         <div class="loader-bar-track">
             <div class="loader-bar" id="loaderBar"></div>
         </div>
@@ -1390,7 +1364,9 @@
 
     <!-- NAV -->
     <nav class="nav" id="nav">
-        <div class="nav-logo">K-<span>SI</span></div>
+        <a href="#" class="nav-logo">
+            <img src="logo-transparent.png" alt="K-SI System – autoryzowany partner Bosch Częstochowa" class="logo-img">
+        </a>
         <div class="nav-links" id="navLinks">
             <a href="#uslugi">Usługi</a>
             <a href="#dlaczego">Dlaczego My</a>
@@ -1403,52 +1379,53 @@
         </div>
     </nav>
 
-    <!-- ===== HERO + ANIMATION ===== -->
-    <section class="hero-anim" id="hero">
-        <div class="hero-sticky">
-            <canvas id="furnaceCanvas"></canvas>
-
-            <!-- INTRO TEXT (visible initially, fades out as scroll starts) -->
-            <div class="hero-text-layer hero-intro" id="heroIntro">
-                <img src="logo-bosch.png" alt="Autoryzowany Partner Bosch" class="hero-partner-logo">
-                <h1>Serwis kotłów gazowych w&nbsp;<em>Częstochowie</em></h1>
-                <p>Montaż · naprawa · konserwacja. Autoryzowany serwis Bosch Home Comfort z gwarancją bezpieczeństwa.
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <img src="hero-bg.jpg" alt="Profesjonalny serwis pieców gazowych – technik przy kotle w Częstochowie">
+        </div>
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="hero-logos">
+                    <img src="logo-bosch.png" alt="Autoryzowany partner Bosch Home Comfort – serwis kotłów gazowych"
+                        class="hero-partner-logo">
+                    <img src="logo-transparent.png" alt="K-SI System – naprawa pieców gazowych Częstochowa"
+                        class="hero-partner-logo ksi">
+                </div>
+                <h1>Serwis pieców gazowych w&nbsp;<em>Częstochowie</em></h1>
+                <p>Montaż · naprawa · konserwacja. Autoryzowany Partner Bosch Home Comfort z gwarancją bezpieczeństwa.
                 </p>
                 <div class="hero-btns">
                     <a href="tel:535950601" class="btn-hero btn-fill">535 950 601</a>
                     <a href="#" class="btn-hero btn-ghost" id="heroCertBtn">Certyfikat Bosch</a>
                 </div>
             </div>
-
-            <!-- SCROLL INFO CARDS (appear at different scroll positions) -->
-            <div class="info-card left" id="card1">
-                <div class="num">01 — DIAGNOSTYKA</div>
-                <h3>Precyzyjna analiza każdego podzespołu</h3>
-                <p>Zaawansowany sprzęt diagnostyczny pozwala nam sprawdzić każdy element kotła — od komory spalania po
-                    wymiennik ciepła.</p>
+            <div class="hero-features">
+                <div class="hero-feat">
+                    <div class="feat-num">01 — DIAGNOSTYKA</div>
+                    <h4>Precyzyjna analiza</h4>
+                    <p>Sprzęt diagnostyczny nowej generacji do każdego podzespołu kotła.</p>
+                </div>
+                <div class="hero-feat">
+                    <div class="feat-num">02 — BEZPIECZEŃSTWO</div>
+                    <h4>Kontrola szczelności</h4>
+                    <p>Analiza spalin i kontrola szczelności gazowej zgodnie z normami.</p>
+                </div>
+                <div class="hero-feat">
+                    <div class="feat-num">03 — KONSERWACJA</div>
+                    <h4>Czyszczenie i regulacja</h4>
+                    <p>Regularny serwis obniża rachunki za gaz nawet o 15%.</p>
+                </div>
+                <div class="hero-feat">
+                    <div class="feat-num">04 — WYMIANA</div>
+                    <h4>Oryginalne części</h4>
+                    <p>Wyłącznie oryginalne części. Doradztwo w zakresie modernizacji.</p>
+                </div>
             </div>
-            <div class="info-card right" id="card2">
-                <div class="num">02 — BEZPIECZEŃSTWO</div>
-                <h3>Kontrola szczelności i analiza spalin</h3>
-                <p>Każdy serwis kończymy analizą spalin i kontrolą szczelności gazowej, zgodnie z obowiązującymi
-                    normami.</p>
-            </div>
-            <div class="info-card left" id="card3">
-                <div class="num">03 — KONSERWACJA</div>
-                <h3>Czyszczenie, regulacja, optymalizacja</h3>
-                <p>Regularny serwis wydłuża żywotność urządzenia i obniża rachunki za gaz nawet o 15%.</p>
-            </div>
-            <div class="info-card right" id="card4">
-                <div class="num">04 — WYMIANA</div>
-                <h3>Oryginalne części i modernizacja</h3>
-                <p>Używamy wyłącznie oryginalnych części zamiennych. Doradzimy, kiedy naprawić, a kiedy wymienić na nowy
-                    kocioł.</p>
-            </div>
-
-            <div class="scroll-cue" id="scrollCue">
-                <span>Przewiń</span>
-                <div class="scroll-scanner"></div>
-            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Przewiń</span>
+            <div class="arrow"></div>
         </div>
     </section>
 
@@ -1664,7 +1641,8 @@
     <footer class="footer" id="kontakt">
         <div class="footer-grid">
             <div class="footer-brand">
-                <h2>K-<span>SI</span> System</h2>
+                <img src="logo-transparent.png" alt="K-SI System – montaż i serwis pieców gazowych Częstochowa"
+                    class="logo-img-footer">
                 <p>Autoryzowany serwis Bosch Home Comfort. Profesjonalny montaż, naprawa i konserwacja urządzeń gazowych
                     w Częstochowie i okolicach.</p>
             </div>
@@ -1717,130 +1695,32 @@
     <!-- LIGHTBOX (for Certificate) -->
     <div class="lightbox" id="lightbox">
         <div class="lightbox-close" id="lightboxClose">&times;</div>
-        <img src="certyfikat-2025.jpg" alt="Certyfikat K-SI Powiększony" id="lightboxImg">
+        <img src="certyfikat-2025.jpg" alt="Certyfikat autoryzowanego partnera Bosch – K-SI System Częstochowa 2025"
+            id="lightboxImg">
     </div>
 
     <script>
-        gsap.registerPlugin(ScrollTrigger);
-
-        // ===== IMAGE PRELOAD + LOADER =====
-        const canvas = document.getElementById('furnaceCanvas');
-        const ctx = canvas.getContext('2d');
-        const frameCount = 168;
-        const images = [];
-        const anim = { frame: 0 };
-        let loaded = 0;
+        // ===== LOADER (quick fade) =====
         const loaderBar = document.getElementById('loaderBar');
         const loaderPct = document.getElementById('loaderPct');
         const loaderScreen = document.getElementById('loader');
 
-        function getUrl(i) {
-            return `https://ubfqewqccwqcpsjencjn.supabase.co/storage/v1/object/public/piec-animacja/ezgif-frame-${String(i + 1).padStart(3, '0')}.jpg`;
-        }
-
-        for (let i = 0; i < frameCount; i++) {
-            const img = new Image();
-            img.crossOrigin = 'anonymous';
-            img.src = getUrl(i);
-            img.onload = () => {
-                loaded++;
-                const pct = Math.round((loaded / frameCount) * 100);
-                loaderBar.style.width = pct + '%';
-                loaderPct.textContent = pct + '%';
-                if (loaded === 1) {
-                    canvas.width = img.naturalWidth;
-                    canvas.height = img.naturalHeight;
-                    renderFrame(0);
-                }
-                if (loaded === frameCount) initPage();
-            };
-            images[i] = img;
-        }
-
-        // If images fail or are slow, init after 8s anyway
-        setTimeout(() => { if (!document.body.classList.contains('ready')) initPage(); }, 8000);
-
-        function renderFrame(idx) {
-            const img = images[Math.min(idx, frameCount - 1)];
-            if (!img || !img.complete) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        }
-
         function initPage() {
             if (document.body.classList.contains('ready')) return;
             document.body.classList.add('ready');
-            loaderScreen.classList.add('hidden');
-            setupAnimations();
+            loaderBar.style.width = '100%';
+            loaderPct.textContent = '100%';
+            setTimeout(() => loaderScreen.classList.add('hidden'), 300);
+            setupReveal();
         }
 
-        // ===== GSAP ANIMATIONS =====
-        function setupAnimations() {
+        // Init on load
+        window.addEventListener('load', initPage);
+        // Fallback
+        setTimeout(initPage, 3000);
 
-            // Frame scrub
-            gsap.to(anim, {
-                frame: frameCount - 1,
-                snap: 'frame',
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: '.hero-anim',
-                    start: 'top top',
-                    end: 'bottom bottom',
-                    scrub: true, // Follow scroll exactly
-                },
-                onUpdate: () => renderFrame(Math.round(anim.frame)),
-            });
-
-            // Hero intro — fade out first 15%
-            gsap.to('#heroIntro', {
-                opacity: 0,
-                y: -60,
-                ease: 'power2.in',
-                scrollTrigger: {
-                    trigger: '.hero-anim',
-                    start: 'top top',
-                    end: '15% top',
-                    scrub: true,
-                }
-            });
-
-            // Scroll cue — hide quickly
-            gsap.to('#scrollCue', {
-                opacity: 0,
-                scrollTrigger: {
-                    trigger: '.hero-anim',
-                    start: '2% top',
-                    end: '5% top',
-                    scrub: true,
-                }
-            });
-
-            // Info cards timing
-            const cards = [
-                { el: '#card1', start: 0.15, end: 0.35 },
-                { el: '#card2', start: 0.35, end: 0.55 },
-                { el: '#card3', start: 0.55, end: 0.75 },
-                { el: '#card4', start: 0.75, end: 0.92 },
-            ];
-
-            cards.forEach(c => {
-                const tl = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: '.hero-anim',
-                        start: `${c.start * 100}% top`,
-                        end: `${c.end * 100}% top`,
-                        scrub: true,
-                    }
-                });
-                tl.fromTo(c.el,
-                    { opacity: 0, y: 50 },
-                    { opacity: 1, y: 0, duration: 0.3 }
-                )
-                    .to(c.el, { opacity: 1, y: 0, duration: 0.4 })
-                    .to(c.el, { opacity: 0, y: -40, duration: 0.3 });
-            });
-
-            // Reveal on scroll
+        // ===== REVEAL ON SCROLL =====
+        function setupReveal() {
             const rvObserver = new IntersectionObserver((entries) => {
                 entries.forEach(e => {
                     if (e.isIntersecting) {
@@ -1850,7 +1730,6 @@
             }, { threshold: 0.12 });
             document.querySelectorAll('.rv').forEach(el => {
                 rvObserver.observe(el);
-                // stagger within parent
                 const siblings = el.parentElement.querySelectorAll('.rv');
                 siblings.forEach((s, i) => { s.style.transitionDelay = (i * 0.08) + 's'; });
             });
@@ -1858,7 +1737,7 @@
 
         // ===== NAV =====
         const nav = document.getElementById('nav');
-        const heroSection = document.querySelector('.hero-anim');
+        const heroSection = document.querySelector('.hero');
         function checkNav() {
             const heroBottom = heroSection.getBoundingClientRect().bottom;
             nav.classList.toggle('solid', heroBottom <= 0);
@@ -1898,8 +1777,6 @@
                 }
             });
         }
-
-
     </script>
 </body>
 
